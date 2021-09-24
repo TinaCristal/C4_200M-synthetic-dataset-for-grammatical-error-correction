@@ -42,9 +42,9 @@ def main(argv):
   edits_tsv_path = argv[2]
   output_tsv_path = argv[3]
 
-  with open(edits_tsv_path) as edits_tsv_reader:
-    with open(target_sentence_tsv_path) as target_sentence_tsv_reader:
-      with open(output_tsv_path, "w") as output_tsv_writer:
+  with open(edits_tsv_path,encoding="utf-8") as edits_tsv_reader:
+    with open(target_sentence_tsv_path,encoding="utf-8") as target_sentence_tsv_reader:
+      with open(output_tsv_path, "w",encoding="utf-8") as output_tsv_writer:
         edits_iterator = get_edits(edits_tsv_reader)
         edit_md5 = "0"
         for target_sentence_tsv_line in target_sentence_tsv_reader:
@@ -57,4 +57,6 @@ def main(argv):
 
 
 if __name__ == "__main__":
-  app.run(main)
+  # app.run(main)
+  argv=['c4200m_make_target_sentences.py','target_sentence.tsv-00001-of-00010', 'edits.tsv-00001-of-00010','sentence_pairs.tsv-00000-of-00010']
+  main(argv)
